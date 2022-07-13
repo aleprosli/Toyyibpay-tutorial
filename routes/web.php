@@ -21,6 +21,10 @@ Route::get('/registration', function () {
     return view('registration.create');
 })->name('registration');
 
+Route::get('/get/banks/FPX', [App\Http\Controllers\FeeController::class, 'getBankFPX'])->name('get:banks');
+Route::get('/create/fee/{student}', [App\Http\Controllers\FeeController::class, 'createFee'])->name('create:fee');
+Route::get('/bill/payment/{bill_code}', [App\Http\Controllers\FeeController::class, 'billPaymentLink'])->name('bill:payment');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
