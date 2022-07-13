@@ -35,7 +35,7 @@ class StudentController extends Controller
         ]);
 
         //store guna mass asignment laravel
-        Student::create([
+        $student = Student::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
@@ -50,10 +50,7 @@ class StudentController extends Controller
         ]);
 
         //lepas store, return view
-        return redirect()->route('/')->with([
-            'alert-type' => 'alert-success',
-            'alert-message' => 'Thank you for register, please wait for approval'
-        ]);
+        return redirect()->route('create:fee',$student);
     }
 
     public function show(Request $request,Student $student)
